@@ -2,24 +2,30 @@ import { useState, useCallback } from 'react';
 import POSTS from './Posts';
 import Post from './Post';
 
-const Posts = () => {
-  const [posts, setPosts] = useState(POSTS);
+const useDeleteArray = (initialValue) => {
+  const [values, setValues] = useState(initialValue);
 
-  const removePosts = useCallback((index) => {
-    const newPosts = [
-      ...posts,
+  const removeValue = useCallback((index) => {
+    const newValues = [
+      ...values,
     ];
 
-    newPosts.splice(index, 1);
+    newValues.splice(index, 1);
 
-    setPosts(newPosts);
-  }, [posts]);
+    setValues(newValues);
+  }, [values]);
+
+  return [values, removeValue];
+};
+
+const Posts = () => {
+  const [posts, removePost] = useDeleteArray(POSTS);
 
   return (
     posts
       .map(props => ({
         ...props,
-        onClick: removePosts,
+        onClick: removePost,
       }))
       .map(Post)
   );
