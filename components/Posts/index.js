@@ -1,52 +1,28 @@
-import React from 'react';
+import { useState, useCallback } from 'react';
 import POSTS from './Posts';
 import Post from './Post';
 
-// const Posts = () => POSTS.map(post => (
-//   <Post
-//     key={post.title}
-//     title={post.title}
-//     description={post.description}
-//     favorite={post.favorite}
-//   />
-// ));
+const Posts = () => {
+  const [posts, setPosts] = useState(POSTS);
 
-// const Posts = () => (
-//   POSTS.map(Post)
-// );
-class Posts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: POSTS,
-    };
-  }
-
-  removePosts(index) {
-    const {
-      posts,
-    } = this.state;
-
+  const removePosts = useCallback((index) => {
     const newPosts = [
       ...posts,
     ];
 
     newPosts.splice(index, 1);
 
-    this.setState({
-      posts: newPosts,
-    });
-  }
+    setPosts(newPosts);
+  }, [posts]);
 
-  render() {
-    const {
-      posts,
-    } = this.state;
-
-    return posts.map((props, index) => (
-      <Post key={props.title} index={index} {...props} onClick={this.removePosts.bind(this)} />
-    ));
-  }
-}
+  return (
+    posts
+      .map(props => ({
+        ...props,
+        onClick: removePosts,
+      }))
+      .map(Post)
+  );
+};
 
 export default Posts;

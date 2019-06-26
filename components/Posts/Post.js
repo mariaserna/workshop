@@ -16,14 +16,13 @@ const Post = ({
     favorite,
     title,
     onClick,
-    index,
-}) => {
+}, index) => {
   const handleClick = () => {
     onClick(index);
   };
 
   return (
-    <Paper>
+    <Paper key={index}>
       <Box m={3}>
         <Typography variant="h6" component="h6">
           {title}
