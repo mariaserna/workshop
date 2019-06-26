@@ -1,7 +1,14 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import {
+  Box,
+  Paper,
+  Container,
+  Button,
+  Typography,
+} from '@material-ui/core';
+import { gql } from 'apollo-boost';
 import client from '../apollo/client';
-import { gql } from "apollo-boost";
+import Posts from '../components/Posts';
 
 const handleClick = () => {
   console.log('Hola!!');
@@ -23,12 +30,17 @@ const Home = () => {
     .then(result => console.log(result));
 
   return (
-    <div>
-      <h1>Welcome!!</h1>
-      <Button variant="contained" color="primary" onClick={handleClick}>
-        Anto!
-      </Button>
-    </div>
+    <Container spacing={2}>
+      <Paper>
+        <Box m={3}>
+          <h1>Anto!!</h1>
+          {/* <Button variant="contained" color="primary" onClick={handleClick}>
+            Button
+          </Button> */}
+        </Box>
+      </Paper>
+      <Posts />
+    </Container>
   );
 };
 
