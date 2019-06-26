@@ -35,7 +35,6 @@ const Posts = () => {
   if (error) {
     return null;
   }
-
   return (
     loading
       ? <Loading />
