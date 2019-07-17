@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Container,
   Typography,
   Card,
@@ -33,7 +34,14 @@ const Users = () => {
               { !!user.projects.length && (
                 <>
                   <Typography variant="h5">Projects</Typography>
-                  <div>{user.projects.map(project => (<div>{project.name}</div>))}</div>
+                  <div>
+                    {user.projects.map(project => (
+                      <>
+                        <div>{project.name}</div>
+                        <Button variant="contained" color="primary">Open Proyect</Button>
+                      </>
+                    ))}
+                  </div>
                 </>
               )}
             </CardContent>
