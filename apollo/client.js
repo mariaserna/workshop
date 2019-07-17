@@ -7,7 +7,8 @@ const { publicRuntimeConfig } = getConfig();
 // const HOST = process.env.HOST || 'http://localhost:3000';
 const client = new ApolloClient({
   fetch,
-  uri: `${publicRuntimeConfig.HOST}/graphql`,
+  // uri: `${publicRuntimeConfig.HOST}/graphql`,
+  uri: `${publicRuntimeConfig.HOST}`,
 });
 
 export default client;

@@ -4,9 +4,9 @@
   "description": "zemoga workshop",
   "main": "index.js",
   "scripts": {
-    "dev": "pm2 start server --watch",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server",
+    "start": "next start",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
